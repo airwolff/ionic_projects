@@ -1,13 +1,15 @@
+// browser module includes *ng for html
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CustomersComponent } from './customers/customers.component';
+import { StudentsComponent } from './students/students.component';
+import { StudentInputComponent } from './students/student-input.component';
 
 // add below decorator to export class AppModule to provide metadata so behind the scenes Angular will transpile code to execute properly
 @NgModule({
   declarations: [
-    AppComponent, CustomersComponent
+    AppComponent, StudentsComponent, StudentInputComponent
   ],
   imports: [
     BrowserModule
