@@ -1,5 +1,6 @@
 <h1>Students</h1>
 <ul>
   <!-- directive is an instruction inside the html *ng imported by BrowserModule in app.module.ts "" are for logic (student is interchangeable) studentsList referenced property from students.component.ts-->
-  <li *ngFor="let student of studentsList">{{ student }}</li>
+  <!-- student is local variable from "let student of..." -->
+  <li *ngFor="let student of studentsList" (click)="onRemoveStudent(student)">{{ student }}</li>
 </ul>
