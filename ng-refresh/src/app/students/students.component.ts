@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 })
 export class StudentsComponent implements OnInit, OnDestroy {
 studentsList: string[];
+isFetching = false;
 private studentListSubs: Subscription;
 // private studentService: StudentsService;
 
@@ -17,10 +18,12 @@ constructor(private studService: StudentsService) {
 }
 
 ngOnInit() {
-  this.studentsList = this.studService.students;
   this.studentListSubs = this.studService.studentsChanged.subscribe(students => {
     this.studentsList = students;
+    this.isFetching = false;
   });
+  this.isFetching = true;
+  this.studService.fetchStudent();
 }
 
 onRemoveStudent(studentName: string ) {

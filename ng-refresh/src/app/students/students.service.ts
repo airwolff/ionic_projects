@@ -1,12 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({providedIn: 'root'})
 export class StudentsService {
   studentsChanged = new Subject<string[]>();
-  students: string[] = ['Holden', 'Tiffany', 'Avery'];
+  students: string[];
 
   constructor(private http: HttpClient) {}
+
+  fetchStudent() {
+    this.http
+      .get<any>('https://pokeapi.co/api/v2/pokemon/')
+      .pipe(
+        map(responseData => {
+          return responseData.results.map(student => student.name);
+        })
+      )
+      .subscribe(transformedData => {
+        this.studentsChanged.next(transformedData);
+      });
+  }
 
   addStudent(name: string) {
     this.students.push(name);
