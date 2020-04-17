@@ -6,6 +6,8 @@ export class StudentsService {
   studentsChanged = new Subject<string[]>();
   students: string[] = ['Holden', 'Tiffany', 'Avery'];
 
+  constructor(private http: HttpClient) {}
+
   addStudent(name: string) {
     this.students.push(name);
     this.studentsChanged.next(this.students);
