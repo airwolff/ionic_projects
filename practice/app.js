@@ -3,6 +3,9 @@ const amountInput = document.querySelector('#input-amount');
 const cancelBtn = document.querySelector('#btn-cancel');
 const confirmBtn = document.querySelector('#btn-confirm');
 const expenseList = document.querySelector('#expense-list');
+const totalExpensesOutput = document.querySelector('#total-expenses');
+
+let totalExpenses = 0;
 
 const clear = () => {
     reasonInput.value = '';
@@ -22,7 +25,11 @@ confirmBtn.addEventListener('click', () => {
 
     expenseList.appendChild(newItem);
 
+    // + before enteredAmount converts string to number since any value you fetch from an input is a string
+    totalExpenses += +enteredAmount;
+    totalExpensesOutput.textContent = '$' + totalExpenses;
     clear();
 })
 
+// executed dynamically because clear is a reference without ()
 cancelBtn.addEventListener('click', clear);
