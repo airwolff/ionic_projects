@@ -7,14 +7,11 @@
 			type="module"
 			src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
 		></script>
-		<script
-			nomodule
-			src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
-		></script>
 		<link
 			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+			href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css"
 		/>
+		<script src="https://unpkg.com/@ionic/core@latest/dist/ionic.js"></script>
 		<title>Budget</title>
 	</head>
 	<body>
@@ -61,19 +58,20 @@
 						</ion-col>
 					</ion-row>
 					<ion-row>
-						<ion-col>
-							<ion-list id="expense-list">
-                                
-                            </ion-list>
+						<ion-col size-md="6" offset-md="3">
+							<ion-list id="expense-list"> </ion-list>
 						</ion-col>
 					</ion-row>
 					<ion-row>
-						<ion-col>
-							<p>Total Expenses: <span id="total-expenses"></span></p>
+						<ion-col size-md="6" offset-md="3">
+							<p class="ion-margin">
+								Total Expenses: <span id="total-expenses"></span>
+							</p>
 						</ion-col>
 					</ion-row>
 				</ion-grid>
 			</ion-content>
+			<ion-alert></ion-alert>
 		</ion-app>
 		<script src="app.js"></script>
 	</body>
